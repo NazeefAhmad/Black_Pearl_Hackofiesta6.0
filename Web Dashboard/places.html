@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Places</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #places-list {
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+    }
+    .place-item {
+      padding: 10px;
+      margin: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .zone-high { color: red; }
+    .zone-moderate { color: orange; }
+    .zone-safe { color: green; }
+  </style>
+</head>
+<body>
+  <h2>List of Places</h2>
+  <a href="maps.html">Back to Map</a>
+  <div id="places-list"></div>
+
+  <script>
+    // Load places from localStorage
+    const places = JSON.parse(localStorage.getItem("places")) || [];
+
+    // Get the places list container
+    const placesList = document.getElementById("places-list");
+
+    // Render places in HTML
+    places.forEach((place) => {
+      const placeDiv = document.createElement("div");
+      placeDiv.classList.add("place-item");
+
+      // Assign color based on risk type
+      let zoneClass = "";
+      if (place.type === "High Risk") zoneClass = "zone-high";
+      else if (place.type === "Moderate Risk") zoneClass = "zone-moderate";
+      else zoneClass = "zone-safe";
+
+      placeDiv.innerHTML = `
+        <h3 class="${zoneClass}">${place.name}</h3>
+        <p><strong>Coordinates:</strong> (${place.center.lat}, ${place.center.lng})</p>
+        <p><strong>Zone Type:</strong> ${place.type}</p>
+      `;
+      placesList.appendChild(placeDiv);
+    });
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Places</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #places-list {
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+    }
+    .place-item {
+      padding: 10px;
+      margin: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .zone-high { color: red; }
+    .zone-moderate { color: orange; }
+    .zone-safe { color: green; }
+  </style>
+</head>
+<body>
+  <h2>List of Places</h2>
+  <a href="maps.html">Back to Map</a>
+  <div id="places-list"></div>
+
+  <script>
+    // Load places from localStorage
+    const places = JSON.parse(localStorage.getItem("places")) || [];
+
+    // Get the places list container
+    const placesList = document.getElementById("places-list");
+
+    // Render places in HTML
+    places.forEach((place) => {
+      const placeDiv = document.createElement("div");
+      placeDiv.classList.add("place-item");
+
+      // Assign color based on risk type
+      let zoneClass = "";
+      if (place.type === "High Risk") zoneClass = "zone-high";
+      else if (place.type === "Moderate Risk") zoneClass = "zone-moderate";
+      else zoneClass = "zone-safe";
+
+      placeDiv.innerHTML = `
+        <h3 class="${zoneClass}">${place.name}</h3>
+        <p><strong>Coordinates:</strong> (${place.center.lat}, ${place.center.lng})</p>
+        <p><strong>Zone Type:</strong> ${place.type}</p>
+      `;
+      placesList.appendChild(placeDiv);
+    });
+  </script>
+</body>
+</html>

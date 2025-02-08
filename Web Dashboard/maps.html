@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!-- <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -49,13 +49,13 @@
   </script>
 </body>
 </html> -->
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Maps with User Location</title>
+  <title>Google Maps Restricted to Uttar Pradesh</title>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLvAWB8-znjIPZd0dBqZF0ved_JxudUZY" async defer></script>
   <style>
     #map {
@@ -68,37 +68,62 @@
   <div id="map"></div>
   <script>
     function initMap() {
+      // Define the bounds of Uttar Pradesh
+      const upBounds = {
+        north: 31.65,
+        south: 23.85,
+        west: 75.50,
+        east: 84.50,
+      };
+
       const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 28.684910 , lng: 77.487930 }, // Default fallback location
-        zoom: 12,
+        center: { lat: 26.8467, lng: 80.9462 }, // Lucknow (UP center)
+        zoom: 7,
+        restriction: {
+          latLngBounds: upBounds,
+          strictBounds: true,
+        },
       });
 
-      // Example coordinates with color data
-      const locations = [
-    { lat: 28.684910,
-          lng: 72.487930,
-          color: "red",
-          size: 50, // Bigger size for red marker
-          opacity: 0.5,}, // Slight transparency for red marker
-        { lat: 30.7849, lng: 77.487930 , color: "yellow" },
-        { lat: 26.7949, lng: 79.487930, color: "green" },
+      // Define Circular Zones (Red, Yellow, Green)
+      const zones = [
+        {
+          name: "Red Zone",
+          color: "#FF0000",
+          opacity: 0.3,
+          center: { lat: 26.85, lng: 80.90 },
+          radius: 5000, // 50km radius
+        },
+        {
+          name: "Yellow Zone",
+          color: "#FFFF00",
+          opacity: 0.3,
+          center: { lat: 25.85, lng: 80.50 },
+          radius: 7000, // 70km radius
+        },
+        {
+          name: "Green Zone",
+          color: "#008000",
+          opacity: 0.3,
+          center: { lat: 27.85, lng: 81.50 },
+          radius: 9000, // 60km radius
+        },
       ];
 
-      // Add markers for predefined locations
-      locations.forEach((location) => {
-        new google.maps.Marker({
-          position: { lat: location.lat, lng: location.lng },
+      // Add Circles to the Map
+      zones.forEach((zone) => {
+        new google.maps.Circle({
+          strokeColor: zone.color,
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: zone.color,
+          fillOpacity: zone.opacity,
           map,
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 10,
-            fillColor: location.color,
-            fillOpacity: 1,
-            strokeWeight: 1,
-          },
+          center: zone.center,
+          radius: zone.radius,
         });
-      });
-
+      }); -->
+<!-- 
       // Use Geolocation API to get user's location
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -108,23 +133,30 @@
               lng: position.coords.longitude,
             };
 
-            // Center the map on the user's location
-            map.setCenter(userLocation);
-
-            // Add a marker for the user's location
-            new google.maps.Marker({
-              position: userLocation,
-              map,
-              title: "You are here!",
-              icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 12,
-                fillColor: "blue",
-                fillOpacity: 1,
-                strokeColor: "white",
-                strokeWeight: 2,
-              },
-            });
+            // Only center if the user is within Uttar Pradesh
+            if (
+              userLocation.lat >= upBounds.south &&
+              userLocation.lat <= upBounds.north &&
+              userLocation.lng >= upBounds.west &&
+              userLocation.lng <= upBounds.east
+            ) {
+              map.setCenter(userLocation);
+              new google.maps.Marker({
+                position: userLocation,
+                map,
+                title: "You are here!",
+                icon: {
+                  path: google.maps.SymbolPath.CIRCLE,
+                  scale: 12,
+                  fillColor: "blue",
+                  fillOpacity: 1,
+                  strokeColor: "white",
+                  strokeWeight: 2,
+                },
+              });
+            } else {
+              alert("You are outside Uttar Pradesh!");
+            }
           },
           () => {
             alert("Unable to retrieve your location.");
@@ -137,6 +169,124 @@
 
     // Load the map
     window.onload = initMap;
+  </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps with Places</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+    #map {
+      flex: 60%;
+      height: 100%;
+    }
+    #places {
+      flex: 40%;
+      overflow-y: scroll;
+      background-color: #f4f4f4;
+      padding: 20px;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    h2 {
+      text-align: center;
+    }
+    .place-item {
+      padding: 10px;
+      margin: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="places">
+    <h2>List of Places</h2>
+    <div id="places-list"></div>
+  </div>
+
+  <script>
+    // Predefined places with coordinates
+    const places = [
+      {
+        name: "Red Zone (Delhi)",
+        lat: 28.6139,
+        lng: 77.2090,
+        type: "High Risk"
+      },
+      {
+        name: "Yellow Zone (Lucknow)",
+        lat: 26.8500,
+        lng: 80.9499,
+        type: "Moderate Risk"
+      },
+      {
+        name: "Green Zone (Agra)",
+        lat: 27.1767,
+        lng: 78.0081,
+        type: "Safe Zone"
+      }
+    ];
+
+    // Initialize the map
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 7,
+        center: { lat: 26.8467, lng: 80.9462 }, // Lucknow as center
+      });
+
+      // Place markers on the map
+      places.forEach((place) => {
+        new google.maps.Marker({
+          position: { lat: place.lat, lng: place.lng },
+          map,
+          title: place.name,
+        });
+      });
+
+      // Display the places in the list
+      const placesList = document.getElementById("places-list");
+      places.forEach((place) => {
+        const placeDiv = document.createElement("div");
+        placeDiv.classList.add("place-item");
+        placeDiv.innerHTML = `
+          <h3>${place.name}</h3>
+          <p><strong>Coordinates:</strong> (${place.lat}, ${place.lng})</p>
+          <p><strong>Zone Type:</strong> ${place.type}</p>
+        `;
+        placesList.appendChild(placeDiv);
+      });
+    }
+
+    // Dynamically load the Google Maps API
+    function loadScript() {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDLvAWB8-znjIPZd0dBqZF0ved_JxudUZY&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      script.onload = function() {
+        console.log("Google Maps API script loaded successfully.");
+      };
+      script.onerror = function() {
+        console.error("Error loading Google Maps API.");
+      };
+      document.body.appendChild(script);
+    }
+
+    // Load script after the window is fully loaded
+    window.onload = loadScript;
   </script>
 </body>
 </html>
