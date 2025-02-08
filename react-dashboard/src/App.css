@@ -1,0 +1,49 @@
+/* .body-container {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem;
+    padding: 5rem 5rem;
+    transition: background-color 0.2s, color 0.2s;
+} */
+
+
+
+.main-container {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.side-container {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.bottom-container {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transition: background-color 0.2s, color 0.2s;
+}
