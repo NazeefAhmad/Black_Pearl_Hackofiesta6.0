@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps with Places</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+    #map {
+      flex: 60%;
+      height: 100%;
+    }
+    #places {
+      flex: 40%;
+      overflow-y: scroll;
+      background-color: #f4f4f4;
+      padding: 20px;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    h2 {
+      text-align: center;
+    }
+    .place-item {
+      padding: 10px;
+      margin: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <div id="places">
+    <h2>List of Places</h2>
+    <div id="places-list"></div>
+  </div>
+
+  <script>
+    // Predefined places with coordinates
+    
+
+    // Initialize the map
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 7,
+        center: { lat: 26.8467, lng: 80.9462 }, // Lucknow as center
+      });
+
+      // Place markers on the map
+      places.forEach((place) => {
+        new google.maps.Marker({
+          position: { lat: place.lat, lng: place.lng },
+          map,
+          title: place.name,
+        });
+      });
+
+      // Display the places in the list
+      const placesList = document.getElementById("places-list");
+      places.forEach((place) => {
+        const placeDiv = document.createElement("div");
+        placeDiv.classList.add("place-item");
+        placeDiv.innerHTML = `
+          <h3>${place.name}</h3>
+          <p><strong>Coordinates:</strong> (${place.lat}, ${place.lng})</p>
+          <p><strong>Zone Type:</strong> ${place.type}</p>
+        `;
+        placesList.appendChild(placeDiv);
+      });
+    }
+
+    // Dynamically load the Google Maps API
+    function loadScript() {
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDLvAWB8-znjIPZd0dBqZF0ved_JxudUZY&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      script.onload = function() {
+        console.log("Google Maps API script loaded successfully.");
+      };
+      script.onerror = function() {
+        console.error("Error loading Google Maps API.");
+      };
+      document.body.appendChild(script);
+    }
+
+    // Load script after the window is fully loaded
+    window.onload = loadScript;
+  </script>
+</body>
+</html>
