@@ -1,6 +1,0 @@
-opencv-python
-face-recognition
-deepface
-numpy
-pymongo
-psycopg2
