@@ -11,7 +11,7 @@ function App() {
         {
             name: "Red Zone (Delhi)",
             lat: 28.6139,
-            lng: 77.2090,
+         lng: 77.2090,
             type: "High Risk"
         },
         {
