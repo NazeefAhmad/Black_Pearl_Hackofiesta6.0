@@ -89,7 +89,6 @@ import WebcamFeed from './components/custom/WebcamFeed';
 import MapComponent from './components/custom/MapComponent';
 import LineChart from './components/custom/LineChart';
 import ComplaintList from './components/custom/ComplaintList';
-import SuspectGallery from './components/custom/SuspectGallery';
 
 function App() {
     const [emotion, setEmotion] = useState<string>("");
@@ -111,13 +110,14 @@ function App() {
 
     const captureFrame = async (imageSrc: string) => {
         if (!isCapturing) return;
+        const apiUrl = import.meta.env.VITE_API_URL;
 
         try {
             const blob = await fetch(imageSrc).then((res) => res.blob());
             const formData = new FormData();
             formData.append('file', blob, 'frame.jpg');
 
-            const response = await axios.post('http://127.0.0.1:8000/detect-emotion/', formData, {
+            const response = await axios.post(`${apiUrl}/detect-emotion/`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
