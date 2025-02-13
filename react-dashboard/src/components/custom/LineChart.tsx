@@ -32,6 +32,7 @@ const LineChart = () => {
             },
             background: 'transparent'
         },
+        colors: ['#ef4444'],
         grid: {
             padding: {
                 left: 10,
@@ -43,10 +44,14 @@ const LineChart = () => {
         },
         stroke: {
             curve: 'smooth',
-            width: 3
+            width: 3,
+            colors: ['#dc2626'],
         },
         markers: {
             size: 4,
+            colors: ['#dc2626'],
+            strokeColors: '#fff',
+            strokeWidth: 2,
         },
         title: {
             text: 'Daily Crime Incidents',
@@ -62,7 +67,19 @@ const LineChart = () => {
                 inverseColors: false,
                 opacityFrom: 0.45,
                 opacityTo: 0.05,
-                stops: [20, 100]
+                stops: [20, 100],
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: '#ef4444',
+                        opacity: 0.4
+                    },
+                    {
+                        offset: 100,
+                        color: '#ef4444',
+                        opacity: 0.1
+                    }
+                ]
             },
         },
         yaxis: {
