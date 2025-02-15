@@ -110,7 +110,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ places }) => {
     return (
         <div 
             ref={mapRef} 
-            className="w-[780px] h-[500px] rounded-lg overflow-hidden"
+            className="w-[850px] h-[500px] rounded-lg overflow-hidden"
         />
     );
 };

@@ -66,7 +66,7 @@ const WebcamFeed: React.FC<WebcamFeedProps> = ({
                 ref={webcamRef}
                 audio={false}
                 screenshotFormat="image/jpeg"
-                width={640}
+                width={710}
                 height={480}
                 videoConstraints={{
                     width: 890,

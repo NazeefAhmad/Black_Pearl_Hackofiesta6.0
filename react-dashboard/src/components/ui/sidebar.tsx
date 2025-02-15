@@ -174,7 +174,7 @@ export const SidebarLink = ({
     <a
       href={link.href}
       className={cn(
-        "flex items-center justify-center md:justify-start gap-4 p-3 hover:bg-gray-100 rounded-lg transition-colors",
+        "flex items-center justify-center md:justify-start gap-4 p-3 hover:bg-blue-700 hover:text-white  rounded-lg transition-colors",
         className
       )}
       {...props}
@@ -185,7 +185,7 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-base font-medium whitespace-pre"
+        className="text-neutral-700 hover:text-white dark:text-neutral-200 text-xl font-semibold whitespace-pre"
       >
         {link.label}
       </motion.span>
@@ -201,30 +201,30 @@ const AdminProfile = () => {
     <div className="relative mt-auto pt-4 border-t">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-3 p-3 hover:bg-gray-100 rounded-lg transition-colors"
+        className="w-full flex items-center gap-3 p-3 hover:bg-blue-700 rounded-lg transition-colors hover:text-white"
       >
         <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center text-white font-medium text-lg">
           A
         </div>
         {open && (
-          <div className="flex flex-col items-start text-neutral-800">
+          <div className="flex flex-col items-start">
             <span className="text-base font-medium">Admin User</span>
-            <span className="text-sm text-neutral-600">admin@cctv.com</span>
+            <span className="text-sm text-neutral-600 group-hover:text-white">admin@cctv.com</span>
           </div>
         )}
       </button>
 
       {isOpen && (
         <div className="absolute bottom-full left-0 mb-2 w-full bg-white rounded-lg shadow-lg border py-1">
-          <button className="w-full px-4 py-2 text-base text-neutral-800 text-left hover:bg-gray-50 flex items-center gap-2">
+          <button className="w-full px-4 py-2 text-base text-left hover:bg-blue-700 hover:text-white flex items-center gap-2 transition-colors">
             <User className="w-5 h-5" />
             Profile
           </button>
-          <button className="w-full px-4 py-2 text-base text-neutral-800 text-left hover:bg-gray-50 flex items-center gap-2">
+          <button className="w-full px-4 py-2 text-base text-left hover:bg-blue-700 hover:text-white flex items-center gap-2 transition-colors">
             <Settings className="w-5 h-5" />
             Settings
           </button>
-          <button className="w-full px-4 py-2 text-base text-left hover:bg-gray-50 flex items-center gap-2 text-red-600">
+          <button className="w-full px-4 py-2 text-base text-left hover:bg-blue-700 hover:text-white flex items-center gap-2 transition-colors">
             <LogOut className="w-5 h-5" />
             Logout
           </button>

@@ -124,42 +124,129 @@ function App() {
                 
                 <div className="flex-1 bg-slate-50 overflow-auto">
                     <div className="max-w-[2000px] mx-auto p-6 space-y-8">
-                        {/* CCTV Feed & Detected Emotion */}
+
+{/* Status Cards */}
+                        <div className="grid grid-cols-4 gap-6">
+                            <div className="bg-red-50 p-4 rounded-lg flex items-center gap-4">
+                                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                                    <IconAlertTriangle className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-red-600 font-medium">Active SOS</p>
+                                    <p className="text-2xl font-bold text-red-700">12</p>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-yellow-50 p-4 rounded-lg flex items-center gap-4">
+                                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                                    <IconBrain className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-yellow-600 font-medium">Response Time</p>
+                                    <p className="text-2xl font-bold text-yellow-700">4.2 min</p>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-green-50 p-4 rounded-lg flex items-center gap-4">
+                                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                    <IconUserCheck className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-green-600 font-medium">Available Units</p>
+                                    <p className="text-2xl font-bold text-green-700">28</p>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
+                                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <IconUserBolt className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <p className="text-blue-600 font-medium">Active Officers</p>
+                                    <p className="text-2xl font-bold text-blue-700">45</p>
+                                </div>
+                            </div>
+                        </div>
+
+            {/* CCTV Feed & Detected Emotion */}
                         <div className="grid grid-cols-4 gap-10">
                             <Card className='col-span-2 main-container'>
-                                <CardHeader>
-                                    <CardTitle className='text-3xl'>Current CCTV Feed</CardTitle>
-                                </CardHeader>
-                                <CardContent className='flex flex-col gap-y-9'>
-                                    <WebcamFeed 
-                                        onCapture={captureFrame} 
-                                        captureInterval={captureInterval}
-                                        isCapturing={isCapturing}
-                                    />
-                                    <button 
-                                        onClick={() => setIsCapturing(!isCapturing)}
-                                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                                    >
-                                        {isCapturing ? 'Stop Capturing' : 'Start Capturing'}
-                                    </button>
-                                </CardContent>
-                            </Card>
-                            <Card className="col-span-2 side-container">
-                                <CardHeader>
+                    <CardHeader>
+                        <CardTitle className='text-3xl'>Current CCTV Feed</CardTitle>
+                    </CardHeader>
+                    <CardContent className='flex flex-col gap-y-9'>
+                        <WebcamFeed 
+                            onCapture={captureFrame} 
+                            captureInterval={captureInterval}
+                            isCapturing={isCapturing}
+                        />
+                        <button 
+                            onClick={() => setIsCapturing(!isCapturing)}
+                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                        >
+                            {isCapturing ? 'Stop Capturing' : 'Start Capturing'}
+                        </button>
+                    </CardContent>
+                </Card>
+                <Card className="col-span-2 side-container">
+                    <CardHeader>
                                     <CardTitle className='text-red-600 text-3xl'>Suspect Detected </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex flex-col gap-2">
+                            <p className="text-lg font-medium">
+                                            {emotion || 'No suspect detected yet'}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                                            {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
+                            </p>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+
+{/* Confidence Score Card */}
+<div className="grid grid-cols-1 gap-6">
+                            <Card className="w-full">
+                                <CardHeader>
+                                    <CardTitle className='text-3xl'>AI Prediction Confidence Score</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="flex flex-col gap-2">
-                                        <p className="text-lg font-medium">
-                                            {emotion || 'No suspect detected yet'}
-                                        </p>
-                                        <p className="text-sm text-gray-500">
-                                            {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
-                                        </p>
+                                    <div className="flex items-center justify-between p-6 border rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50">
+                                        <div className="space-y-2">
+                                            <h3 className="text-lg font-medium text-gray-700">Overall System Confidence</h3>
+                                            <p className="text-sm text-gray-600">Based on historical data accuracy and current pattern matching</p>
+                                        </div>
+                                        <div className="flex items-center gap-4">
+                                            <div className="text-right">
+                                                <span className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                                                    96.8%
+                                                </span>
+                                                <p className="text-sm text-gray-500 mt-1">Last updated 5 mins ago</p>
+                                            </div>
+                                            <div className="h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center">
+                                                <IconBrain className="w-8 h-8 text-white" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-6 mt-6">
+                                        <div className="p-4 border rounded-lg bg-gray-50">
+                                            <h4 className="text-sm font-medium text-gray-600">Pattern Recognition</h4>
+                                            <p className="text-2xl font-bold text-blue-600 mt-1">98.2%</p>
+                                        </div>
+                                        <div className="p-4 border rounded-lg bg-gray-50">
+                                            <h4 className="text-sm font-medium text-gray-600">Location Accuracy</h4>
+                                            <p className="text-2xl font-bold text-cyan-600 mt-1">95.7%</p>
+                                        </div>
+                                        <div className="p-4 border rounded-lg bg-gray-50">
+                                            <h4 className="text-sm font-medium text-gray-600">Time Prediction</h4>
+                                            <p className="text-2xl font-bold text-purple-600 mt-1">96.5%</p>
+                                        </div>
                                     </div>
                                 </CardContent>
                             </Card>
                         </div>
+
 {/* AI Stats & Real-time Alerts */}
                         
                         <div className='grid grid-cols-5 gap-10'>
@@ -232,66 +319,109 @@ function App() {
                             </Card>
                         </div>
 
-                        {/* Status Cards */}
-                        <div className="grid grid-cols-4 gap-6">
-                            <div className="bg-red-50 p-4 rounded-lg flex items-center gap-4">
-                                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
-                                    <IconAlertTriangle className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-red-600 font-medium">Active SOS</p>
-                                    <p className="text-2xl font-bold text-red-700">12</p>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-yellow-50 p-4 rounded-lg flex items-center gap-4">
-                                <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
-                                    <IconBrain className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-yellow-600 font-medium">Response Time</p>
-                                    <p className="text-2xl font-bold text-yellow-700">4.2 min</p>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-green-50 p-4 rounded-lg flex items-center gap-4">
-                                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                                    <IconUserCheck className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-green-600 font-medium">Available Units</p>
-                                    <p className="text-2xl font-bold text-green-700">28</p>
-                                </div>
-                            </div>
-                            
-                            <div className="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
-                                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                                    <IconUserBolt className="w-6 h-6 text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-blue-600 font-medium">Active Officers</p>
-                                    <p className="text-2xl font-bold text-blue-700">45</p>
-                                </div>
-                            </div>
-                        </div>
+{/* Project Status Cards */}
+<div className="grid grid-cols-4 gap-6">
+    <div className="bg-white p-6 rounded-xl border">
+        <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-medium">Total Projects</h3>
+            <span className="p-2 bg-green-50 rounded-lg">
+                <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 13L10 16L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </span>
+        </div>
+        <div className="flex items-end gap-2">
+            <span className="text-4xl font-bold">24</span>
+            <span className="text-sm text-green-600 mb-1">Increased from last month</span>
+        </div>
+    </div>
 
-                        {/* Heatmaps & Place List */}
-                        <div className="grid grid-cols-5 gap-10">
-                            <Card className="col-span-3 main-container">
-                                <CardHeader>
+    <div className="bg-white p-6 rounded-xl border">
+        <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-medium">Ended Projects</h3>
+            <span className="p-2 bg-green-50 rounded-lg">
+                <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 13L10 16L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </span>
+        </div>
+        <div className="flex items-end gap-2">
+            <span className="text-4xl font-bold">10</span>
+            <span className="text-sm text-green-600 mb-1">Increased from last month</span>
+        </div>
+    </div>
+
+    <div className="bg-white p-6 rounded-xl border">
+        <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-medium">Running Projects</h3>
+            <span className="p-2 bg-green-50 rounded-lg">
+                <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 13L10 16L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </span>
+        </div>
+        <div className="flex items-end gap-2">
+            <span className="text-4xl font-bold">12</span>
+            <span className="text-sm text-green-600 mb-1">Increased from last month</span>
+        </div>
+    </div>
+
+    <div className="bg-white p-6 rounded-xl border">
+        <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-medium">Pending Project</h3>
+            <span className="p-2 bg-blue-50 rounded-lg">
+                <svg className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+            </span>
+        </div>
+        <div className="flex items-end gap-2">
+            <span className="text-4xl font-bold">2</span>
+            <span className="text-sm text-blue-600 mb-1">On Discuss</span>
+        </div>
+    </div>
+</div>
+
+                        
+
+                        {/* Live Complaint Portal */}
+            <div className='grid grid-cols-5 gap-10'>
+                <Card className=" main-container col-span-2">
+                    <CardHeader>
+                        <CardTitle className='text-3xl'>Time Chart</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <LineChart />
+                    </CardContent>
+                </Card>
+                <Card className='col-span-3 bottom-side-container'>
+                    <CardHeader>
+                        <CardTitle className='w-full text-3xl'>Live Complaint Portal</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ComplaintList />
+                    </CardContent>
+                </Card>
+            </div>
+
+            {/* Heatmaps & Place List */}
+            <div className="grid grid-cols-5 gap-10">
+                <Card className="col-span-3 main-container">
+                    <CardHeader>
                                     <CardTitle className='text-3xl'>Crime Intensity Heatmaps</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <MapComponent places={places} />
-                                </CardContent>
-                            </Card>
-                            <Card className='bottom-side-container col-span-2'>
-                                <CardHeader>
+                    </CardHeader>
+                    <CardContent>
+                        <MapComponent places={places} />
+                    </CardContent>
+                </Card>
+                <Card className='bottom-side-container col-span-2'>
+                    <CardHeader>
                                     <CardTitle className='text-3xl'>High Crime Areas</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className='flex flex-col gap-4 h-[450px] overflow-y-auto pr-2'>
-                                        {places.map((place, index) => (
+                    </CardHeader>
+                    <CardContent>
+                        <div className='flex flex-col gap-4 h-[450px] overflow-y-auto pr-2'>
+                            {places.map((place, index) => (
                                             <div 
                                                 key={index} 
                                                 className={cn(
@@ -324,28 +454,17 @@ function App() {
                                                     )}>
                                                         Type: {place.type}
                                                     </p>
-                                                    <p className="text-sm text-gray-500">
-                                                        Location: {place.lat.toFixed(4)}, {place.lng.toFixed(4)}
-                                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                        Location: {place.lat.toFixed(4)}, {place.lng.toFixed(4)}
+                                    </p>
                                                 </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
+                                </div>
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
                         </div>
 
-                        {/* Live Complaint Portal */}
-                        <div className='grid grid-cols-5 gap-10'>
-                            <Card className='col-span-5'>
-                                <CardHeader>
-                                    <CardTitle className='w-full text-3xl'>Live Complaint Portal</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <ComplaintList />
-                                </CardContent>
-                            </Card>
-                        </div>
 
                         {/* Crime Prediction Heatmap & Analysis */}
                         <div className="grid grid-cols-5 gap-10">
@@ -422,47 +541,7 @@ function App() {
                             </div>
                         </div>
 
-                        {/* Confidence Score Card */}
-                        <div className="grid grid-cols-1 gap-6">
-                            <Card className="w-full">
-                                <CardHeader>
-                                    <CardTitle className='text-3xl'>AI Prediction Confidence Score</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="flex items-center justify-between p-6 border rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50">
-                                        <div className="space-y-2">
-                                            <h3 className="text-lg font-medium text-gray-700">Overall System Confidence</h3>
-                                            <p className="text-sm text-gray-600">Based on historical data accuracy and current pattern matching</p>
-                                        </div>
-                                        <div className="flex items-center gap-4">
-                                            <div className="text-right">
-                                                <span className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                                                    96.8%
-                                                </span>
-                                                <p className="text-sm text-gray-500 mt-1">Last updated 5 mins ago</p>
-                                            </div>
-                                            <div className="h-16 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center">
-                                                <IconBrain className="w-8 h-8 text-white" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-3 gap-6 mt-6">
-                                        <div className="p-4 border rounded-lg bg-gray-50">
-                                            <h4 className="text-sm font-medium text-gray-600">Pattern Recognition</h4>
-                                            <p className="text-2xl font-bold text-blue-600 mt-1">98.2%</p>
-                                        </div>
-                                        <div className="p-4 border rounded-lg bg-gray-50">
-                                            <h4 className="text-sm font-medium text-gray-600">Location Accuracy</h4>
-                                            <p className="text-2xl font-bold text-cyan-600 mt-1">95.7%</p>
-                                        </div>
-                                        <div className="p-4 border rounded-lg bg-gray-50">
-                                            <h4 className="text-sm font-medium text-gray-600">Time Prediction</h4>
-                                            <p className="text-2xl font-bold text-purple-600 mt-1">96.5%</p>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </div>
+                        
                     </div>
                     <Footer />
                 </div>
