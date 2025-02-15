@@ -95,18 +95,27 @@ function App() {
             formData.append('file', blob, 'frame.jpg');
 
             const response = await axios.post(`${apiUrl}/detect-emotion/`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: { 
+                    'Content-Type': 'multipart/form-data',
+                    // Add withCredentials if your API requires authentication
+                    // withCredentials: true
+                }
             });
 
             if (response.data && response.data.emotions && response.data.emotions.length > 0) {
                 const detectedEmotion = response.data.emotions[0];
                 setEmotion(detectedEmotion);
-            } else {
-                setEmotion('No face detected');
             }
         } catch (error) {
-            console.error('Error detecting emotion:', error);
-            setEmotion('Error detecting emotion');
+            // More graceful error handling
+            console.error("Error capturing frame:", error);
+            if (axios.isAxiosError(error)) {
+                if (error.code === 'ERR_NETWORK') {
+                    setEmotion("Network error - Check API connection");
+                } else {
+                    setEmotion("Error detecting emotion");
+                }
+            }
         }
     };
 
