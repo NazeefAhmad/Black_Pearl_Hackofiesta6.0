@@ -18,7 +18,7 @@ import MapComponent from './components/custom/MapComponent';
 import LineChart from './components/custom/LineChart';
 import ComplaintList from './components/custom/ComplaintList';
 import Header from './components/custom/Header';
-import { ScrollArea } from './components/ui/scroll-area';
+// import { ScrollArea } from './components/ui/scroll-area';
 import { cn } from './lib/utils';
 import Footer from './components/custom/Footer';
 

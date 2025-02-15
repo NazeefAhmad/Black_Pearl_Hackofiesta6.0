@@ -1,4 +1,4 @@
-import { Bell, Menu, User, LogOut, Settings } from "lucide-react"
+import { Bell, Menu } from "lucide-react"
 import { useState } from "react"
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
             <div className="max-w-[2000px] mx-auto px-6 h-20 flex items-center justify-between">
                 {/* Left side */}
                 <div className="flex items-center gap-6">
-                    <button className="lg:hidden">
+                    <button aria-label="Menu" className="lg:hidden">
                         <Menu className="w-6 h-6" />
                     </button>
                     <h2 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -21,6 +21,7 @@ const Header = () => {
                 <div className="flex items-center gap-4">
                     <div className="relative">
                         <button 
+                            aria-label="Notifications"
                             onClick={() => setIsNotificationOpen(!isNotificationOpen)}
                             className="p-2 hover:bg-gray-100 rounded-full transition-colors relative"
                         >
