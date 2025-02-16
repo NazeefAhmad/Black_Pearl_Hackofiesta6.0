@@ -47,7 +47,7 @@ PORT=5000
 ```bash
 cd react-dashboard && npm install && npm run dev
 ```
-👉 View at: `http://localhost:3000`
+👉 View at: `https://vercel.com/wt-pbl/suspect-detection-model-up-police`
 
 ---
 ## 📂 Project Directory Structure
