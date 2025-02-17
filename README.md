@@ -53,6 +53,7 @@ cd react-dashboard && npm install && npm run dev
 ## 📂 Project Directory Structure
 ```
 📂 BlackPearl
+├── Facial-Detection/       
 ├── backend/            # APIs
 ├── react-dashboard/    # Web Interface
 ├── mobile-app/         # Mobile App

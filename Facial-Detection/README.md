@@ -1,3 +1,48 @@
+# 🎭 Facial Detection Module
+Part of the [Black Pearl Surveillance System](../README.md)
+
+## Overview
+This module implements real-time facial emotion detection using the `deepface` library and OpenCV. It captures video from webcams/CCTV, detects faces, and predicts emotions in real-time.
+
+## Features
+- Real-time facial detection
+- Emotion analysis (happy, sad, angry, etc.)
+- FastAPI backend service
+- Web dashboard integration
+
+## Dependencies
+```bash
+opencv-python
+deepface
+tf_keras
+```
+
+## Quick Start
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run emotion detection:
+```bash
+python emotion.py  # For standalone testing
+python server.py  # For web integration
+```
+
+## API Endpoints
+The FastAPI server (`server.py`) provides:
+- `POST /detect-emotion/`: Analyzes emotions in uploaded images
+- Returns detected emotions as JSON response
+
+## Integration
+- Connects to web dashboard via FastAPI
+- Supports real-time video processing
+- CORS enabled for web requests
+
+## Contributors
+- Pragati Upadhyay (AI/ML Integration)
+- Nazeef Ahmad (Backend Integration)
+
 # Facial-Emotion-Recognition-using-OpenCV-and-Deepface
 This project implements real-time facial emotion detection using the `deepface` library and OpenCV. It captures video from the webcam, detects faces, and predicts the emotions associated with each face. The emotion labels are displayed on the frames in real-time.
 This is probably the shortest code to implement realtime emotion monitoring.

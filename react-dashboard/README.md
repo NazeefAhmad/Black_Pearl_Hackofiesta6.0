@@ -1,3 +1,58 @@
+# 🖥️ React Dashboard
+Part of the [Black Pearl Surveillance System](../README.md)
+
+## Overview
+Admin dashboard for the surveillance system built with React, TypeScript, and Vite.
+
+## Features
+- Real-time CCTV monitoring
+- Emotion detection visualization
+- Crime alerts and notifications
+- Analytics dashboard
+- Suspect gallery
+- Heatmap visualization
+
+## Tech Stack
+- React + TypeScript + Vite
+- Firebase Realtime Database
+- Tailwind CSS
+- Google Maps Integration
+
+## Getting Started
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Start development server:
+```bash
+npm run dev
+```
+
+## Firebase Setup
+Configure Firebase in `src/lib/firebase.ts`:
+```typescript
+export const firebaseConfig = {
+  apiKey: "AIzaSyBXWwtmlhQiNBrXivwFWk-70qqSNv2Rmos",
+  authDomain: "sadam-sdm.firebaseapp.com",
+  // ... other config
+};
+```
+
+## Project Structure
+```
+src/
+├── components/
+│   ├── custom/       # Custom components
+│   └── ui/          # UI components
+├── lib/             # Utilities and configs
+└── App.tsx          # Main application
+```
+
+## Contributors
+- Nazeef Ahmad (Frontend Development)
+- Arunabh Bhattacharya (UI/UX Design)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
