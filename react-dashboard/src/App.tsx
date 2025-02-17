@@ -202,13 +202,60 @@ function App() {
                                     <CardTitle className='text-red-600 text-3xl'>Suspect Detected </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <div className="flex flex-col gap-2">
-                            <p className="text-lg font-medium">
-                                            {emotion || 'No suspect detected yet'}
+                        <div className="flex flex-col gap-4 p-4 bg-red-50 rounded-lg border border-red-200">
+                            <p className="text-xl font-semibold text-red-700 flex items-center gap-2">
+                                <IconAlertTriangle className="w-6 h-6" />
+                                {emotion || 'No suspect detected yet'}
                             </p>
-                            <p className="text-sm text-gray-500">
-                                            {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
+                            <p className="text-sm font-medium bg-red-100 text-red-600 px-3 py-1 rounded-full w-fit">
+                                {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
                             </p>
+                            <div className="space-y-4">
+                                <p className="text-base font-medium text-gray-700 border-b pb-2">
+                                    Suspect Details from Database
+                                </p>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">ID</p>
+                                        <p className="text-base text-gray-800">1234567890</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">Name</p>
+                                        <p className="text-base text-gray-800">John Doe</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">Age</p>
+                                        <p className="text-base text-gray-800">30</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">Gender</p>
+                                        <p className="text-base text-gray-800">Male</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">Crime</p>
+                                        <p className="text-base text-gray-800">Theft</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-md shadow-sm">
+                                        <p className="text-sm font-medium text-gray-600">Location</p>
+                                        <p className="text-base text-gray-800">Delhi</p>
+                                    </div>
+                                </div>
+                                <div className="bg-white p-3 rounded-md shadow-sm">
+                                    <p className="text-sm font-medium text-gray-600">Time Detected</p>
+                                    <p className="text-base text-gray-800">10:00 AM</p>
+                                </div>
+                                <div className="bg-red-50 border border-red-300 rounded-md p-3 mt-2">
+                                    <p className="text-sm font-medium text-red-700 flex items-center gap-2">
+                                        <IconAlertTriangle className="w-5 h-5" />
+                                        Weapons Detected: Sharp Object, Knife
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-3">
+                                <p className="text-sm font-medium text-yellow-700">
+                                    Safety Equipment Missing: Helmet, Vest
+                                </p>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>
