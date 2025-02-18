@@ -49,10 +49,6 @@ src/
 └── App.tsx          # Main application
 ```
 
-## Contributors
-- Nazeef Ahmad (Frontend Development)
-- Arunabh Bhattacharya (UI/UX Design)
-
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

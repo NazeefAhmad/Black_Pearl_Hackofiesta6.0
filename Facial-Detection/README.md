@@ -39,10 +39,6 @@ The FastAPI server (`server.py`) provides:
 - Supports real-time video processing
 - CORS enabled for web requests
 
-## Contributors
-- Pragati Upadhyay (AI/ML Integration)
-- Nazeef Ahmad (Backend Integration)
-
 # Facial-Emotion-Recognition-using-OpenCV-and-Deepface
 This project implements real-time facial emotion detection using the `deepface` library and OpenCV. It captures video from the webcam, detects faces, and predicts the emotions associated with each face. The emotion labels are displayed on the frames in real-time.
 This is probably the shortest code to implement realtime emotion monitoring.

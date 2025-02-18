@@ -48,7 +48,3 @@ The system:
 2. Processes video feed
 3. Matches faces against database
 4. Generates alerts for matches
-
-## Contributors
-- Pragati Upadhyay (AI Model Development)
-- Arunabh Bhattacharya (Database Integration) 

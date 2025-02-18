@@ -43,7 +43,3 @@ model = YOLO('runs/detect/train/weights/best.pt')
 - Connects to main dashboard
 - Real-time alerts
 - Supports multiple CCTV feeds
-
-## Contributors
-- Pragati Upadhyay (Model Training)
-- Nazeef Ahmad (System Integration) 
