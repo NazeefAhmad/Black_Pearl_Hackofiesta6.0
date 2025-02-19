@@ -1,0 +1,12 @@
+# This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/nazeef/.pub-cache/hosted/pub.dev/cloud_firestore-5.5.0/
+cloud_firestore_web=/Users/nazeef/.pub-cache/hosted/pub.dev/cloud_firestore_web-4.3.4/
+firebase_auth=/Users/nazeef/.pub-cache/hosted/pub.dev/firebase_auth-5.3.2/
+firebase_auth_web=/Users/nazeef/.pub-cache/hosted/pub.dev/firebase_auth_web-5.13.3/
+firebase_core=/Users/nazeef/.pub-cache/hosted/pub.dev/firebase_core-3.8.0/
+firebase_core_web=/Users/nazeef/.pub-cache/hosted/pub.dev/firebase_core_web-2.18.1/
+geolocator=/Users/nazeef/.pub-cache/hosted/pub.dev/geolocator-9.0.2/
+geolocator_android=/Users/nazeef/.pub-cache/hosted/pub.dev/geolocator_android-4.6.1/
+geolocator_apple=/Users/nazeef/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.8+1/
+geolocator_web=/Users/nazeef/.pub-cache/hosted/pub.dev/geolocator_web-2.2.1/
+geolocator_windows=/Users/nazeef/.pub-cache/hosted/pub.dev/geolocator_windows-0.1.3/

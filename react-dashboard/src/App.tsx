@@ -206,7 +206,13 @@ function App() {
                             <p className="text-xl font-semibold text-red-700 flex items-center gap-2">
                                 <IconAlertTriangle className="w-6 h-6" />
                                 {emotion || 'No suspect detected yet'}
+                        <div className="flex flex-col gap-4 p-4 bg-red-50 rounded-lg border border-red-200">
+                            <p className="text-xl font-semibold text-red-700 flex items-center gap-2">
+                                <IconAlertTriangle className="w-6 h-6" />
+                                {emotion || 'No suspect detected yet'}
                             </p>
+                            <p className="text-sm font-medium bg-red-100 text-red-600 px-3 py-1 rounded-full w-fit">
+                                {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
                             <p className="text-sm font-medium bg-red-100 text-red-600 px-3 py-1 rounded-full w-fit">
                                 {isCapturing ? 'Actively detecting suspects...' : 'Detection paused'}
                             </p>
@@ -217,15 +223,15 @@ function App() {
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">ID</p>
-                                        <p className="text-base text-gray-800">1234567890</p>
+                                        <p className="text-base text-gray-800">_is8923</p>
                                     </div>
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">Name</p>
-                                        <p className="text-base text-gray-800">John Doe</p>
+                                        <p className="text-base text-gray-800">Rakesh Kumar</p>
                                     </div>
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">Age</p>
-                                        <p className="text-base text-gray-800">30</p>
+                                        <p className="text-base text-gray-800">18</p>
                                     </div>
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">Gender</p>
@@ -233,7 +239,7 @@ function App() {
                                     </div>
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">Crime</p>
-                                        <p className="text-base text-gray-800">Theft</p>
+                                        <p className="text-base text-gray-800">Fight, Attack</p>
                                     </div>
                                     <div className="bg-white p-3 rounded-md shadow-sm">
                                         <p className="text-sm font-medium text-gray-600">Location</p>
@@ -247,7 +253,7 @@ function App() {
                                 <div className="bg-red-50 border border-red-300 rounded-md p-3 mt-2">
                                     <p className="text-sm font-medium text-red-700 flex items-center gap-2">
                                         <IconAlertTriangle className="w-5 h-5" />
-                                        Weapons Detected: Sharp Object, Knife
+                                        Weapons Detected: Long Object, Rod
                                     </p>
                                 </div>
                             </div>
@@ -258,6 +264,7 @@ function App() {
                             </div>
                         </div>
                     </CardContent>
+
                 </Card>
             </div>
 
@@ -560,17 +567,17 @@ function App() {
                                     </CardHeader>
                                     <CardContent className="space-y-4">
                                         <div className="p-4 bg-red-50 rounded-lg border border-red-100">
-                                            <h3 className="font-medium">Downtown District</h3>
+                                            <h3 className="font-medium">Govindpuram, Ghaziabad</h3>
                                             <p className="text-sm text-gray-600">High activity predicted between 22:00-02:00</p>
                                             <p className="text-sm text-red-600 font-medium mt-1">Recommended Units: 4</p>
                                         </div>
                                         <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-100">
-                                            <h3 className="font-medium">Central Station Area</h3>
+                                            <h3 className="font-medium">Railway Station Area</h3>
                                             <p className="text-sm text-gray-600">Medium activity predicted between 18:00-23:00</p>
                                             <p className="text-sm text-yellow-600 font-medium mt-1">Recommended Units: 2</p>
                                         </div>
                                         <div className="p-4 bg-green-50 rounded-lg border border-green-100">
-                                            <h3 className="font-medium">Residential Zone</h3>
+                                            <h3 className="font-medium">Muradnagar </h3>
                                             <p className="text-sm text-gray-600">Low activity predicted between 20:00-00:00</p>
                                             <p className="text-sm text-blue-600 font-medium mt-1">Recommended Units: 1</p>
                                         </div>
