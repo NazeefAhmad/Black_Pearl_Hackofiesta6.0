@@ -18,7 +18,7 @@ Using existing CCTV networks for crowd management, crime prevention, and work mo
 - **Frontend:** Next.js (Admin Dashboard), Flutter (Mobile App)  
 - **Backend:** Node.js, Golang  
 - **AI/ML:** TensorFlow, OpenCV, Mediapipe  
-- **Database:** MongoDB  
+- **Database:** MongoDB
 - **Cloud:** Google Cloud  
 
 ---
