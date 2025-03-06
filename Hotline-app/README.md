@@ -1,3 +1,8 @@
+# 👮 Civilian Hotline App
+Part of the [Black Pearl Surveillance System](../README.md)
+
+## Overview
+Civilian Quick Emergency Hotline App for Quick Notifying of Crimes
 
 ### **Steps to Install and Run the hotline App**
 
